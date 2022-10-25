@@ -24,28 +24,36 @@ else:
     degree.sort()
 
     S = ''
+    sign = ''
 
     for i in reversed(degree):
-        x = random.randint(-100, 100)
+        x = random.randint(-1, 3)
+        print(x)
         p = 'x'
         I = str(i)
 
+        if x < 0:
+            x = abs(x)
+            sign = '-'
+        else:
+            sign = '+'
+
         if x == 0:
             continue
-        elif x == 1:
+        elif x == 1 and i == 0:
+            x = 1
+        elif x == -1 and i == 0:
+            x = -1
+        elif x == 1 or x == -1:
             x = ''
-        elif x < 0:
-            token = ''
-        else:
-            token = '+'
-
+        
         if i == 1:
-            I = str()
+            I = ''
         if i == 0:
             p = ''
-            I = str()
+            I = ''
             
-        S += f'{token}{x}{p}{get_sub(I)}'
+        S += f'{sign}{x}{p}{get_sub(I)}'
 
     if k == 1:
         S += '!'
